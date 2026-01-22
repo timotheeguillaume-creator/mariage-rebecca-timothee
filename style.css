@@ -136,3 +136,134 @@ input:focus { border-bottom-color: var(--gold); }
     .rsvp-section { padding: 30px 20px; }
     .nights-grid { grid-template-columns: 1fr; }
 }
+
+/* Espacement formulaire */
+.spacer-top {
+    margin-top: 35px; /* Espace entre le champ texte et les checkbox */
+}
+
+/* Style du long texte d'intro */
+.intro-text {
+    max-width: 700px;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 50px;
+}
+
+.intro-text p {
+    margin-bottom: 25px;
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+.intro-text .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.highlight {
+    text-align: center;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1.1rem !important;
+    margin: 40px 0 !important;
+}
+
+/* Carte stylisée */
+.map-container {
+    padding: 60px 0 0 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.map-label {
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+/* On force la carte en mode "Flat/Epuré" via CSS filter */
+iframe {
+    filter: grayscale(100%) invert(5%) contrast(1.1);
+}
+
+/* --- STYLE HONEYBOOM (Inspi Festival) --- */
+.honeyboom-box.boom-style {
+    background: linear-gradient(135deg, #fffaf2 0%, #fef3e6 100%);
+    padding: 30px;
+    border: none;
+    border-radius: 40px 10px 40px 10px; /* Forme organique */
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #e2bc8a;
+}
+
+.boom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.honey-title {
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    color: #8d6e63; /* Brun chaud terreux */
+    margin: 0;
+}
+
+.boom-location {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #e2bc8a;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.boom-label {
+    font-weight: 400;
+    color: #5d4037;
+}
+
+/* --- SECTION CARTE & ITINERAIRE --- */
+.map-container {
+    padding: 60px 0 0 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+iframe {
+    filter: grayscale(100%) contrast(1.1) opacity(0.8);
+    transition: 0.5s ease;
+}
+
+iframe:hover {
+    filter: grayscale(0%) opacity(1); /* La carte reprend des couleurs au survol */
+}
+
+.itinerary-wrapper {
+    padding: 30px;
+    background: var(--white);
+}
+
+.btn-itinerary {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--dark);
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.btn-itinerary:hover {
+    background-color: var(--dark);
+    color: var(--white);
+}

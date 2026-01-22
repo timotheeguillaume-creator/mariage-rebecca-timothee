@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rebecca & Timothée</title>
+    <title>Rébecca & Timothée</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,62 +21,97 @@
     <div id="main-content" class="hidden">
         <div class="parallax">
             <div class="caption">
-                <span class="border">REBECCA & TIMOTHÉE</span>
+                <h1 class="border">Rébecca & Timothée</h1>
+                <p class="wedding-date">25 — 28 JUIN 2027</p>
             </div>
         </div>
 
-        <div class="content">
-            <h3>Heureux de vous compter parmi nous !</h3>
-            <p>Merci de remplir ce petit formulaire pour nous aider à tout organiser.</p>
+        <div class="content intro-text">
+            <h2 class="section-title">Save the Date – Un week-end ensemble</h2>
+            <p>Rébecca et Timothée ont la joie de vous inviter à leur mariage, qui sera célébré le <strong>samedi 26 juin 2027</strong> au Château d’Embourg, à Souvigny.</p>
+            
+            <p>Au-delà de cette cérémonie, nous avons un souhait qui nous tient particulièrement à cœur. La distance ne nous permet pas toujours de passer autant de temps que nous le voudrions avec chacun d'entre vous. C’est pourquoi nous avons choisi de prolonger les festivités du <strong>vendredi 25 au lundi 28 juin</strong>.</p>
+            
+            <p>Réunir nos familles et nos amis venus de France et d'ailleurs est pour nous le plus beau des cadeaux. Nous rêvons de ces trois jours comme d'une parenthèse hors du temps, une occasion rare de voir nos univers se rencontrer, de créer des souvenirs communs et de profiter de votre présence, tout simplement.</p>
+            
+            <p>Pour faire de ce rassemblement une grande fête partagée, l’hébergement et la restauration sont prévus sur place durant tout le séjour. Nous vous demandons une participation de <strong>60€ par personne</strong> (+de 12ans) pour l’ensemble du week-end (incluant les trois nuitées et les repas).</p>
+            
+            <p class="highlight">Et n’oubliez pas de glisser un maillot de bain dans votre valise pour profiter pleinement du domaine !</p>
+            
+            <p>Nous avons hâte de vivre ces moments précieux avec vous.</p>
         </div>
 
         <div class="rsvp-section">
             <form id="rsvp-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
-                
-                <input type="hidden" name="guest_identifier" id="guest-id">
+                <input type="hidden" name="guest_email" id="guest-id">
 
-                <input type="text" name="prenom" placeholder="Ton prénom" required>
+                <div class="field-group">
+                    <label>Ton prénom</label>
+                    <input type="text" name="prenom" placeholder="Ex: Marie" required>
+                </div>
 
-                <div class="checkbox-group">
+                <div class="checkbox-wrapper spacer-top">
                     <input type="checkbox" id="add-plus-one" name="vient_avec_partenaire">
-                    <label for="add-plus-one">Ajouter mon/ma partenaire (+1)</label>
+                    <label for="add-plus-one">Ajouter mon/ma partenaire</label>
                 </div>
+                
                 <div id="partner-field" class="hidden">
-                    <input type="text" name="nom_partenaire" placeholder="Prénom du partenaire">
+                    <input type="text" name="nom_partenaire" placeholder="Son prénom">
                 </div>
 
-                <div class="checkbox-group">
+                <div class="checkbox-wrapper spacer-top">
                     <input type="checkbox" id="has-kids" name="vient_avec_enfants">
                     <label for="has-kids">Je viens avec des enfants</label>
                 </div>
+
                 <div id="kids-field" class="hidden">
-                    <input type="number" name="nb_enfants" placeholder="Nombre d'enfants">
-                    <input type="text" name="age_enfants" placeholder="Âges des enfants">
+                    <div class="side-by-side">
+                        <input type="number" name="nb_enfants" placeholder="Nombre">
+                        <input type="text" name="age_enfants" placeholder="Âges">
+                    </div>
                 </div>
 
                 <hr>
                 
-                <p><strong>Quelles nuits seras-tu présent ?</strong></p>
+                <p class="label-heading">Quelles nuits seras-tu présent ?</p>
                 <div class="nights-grid">
                     <label><input type="checkbox" name="nuit_vendredi"> Vendredi soir</label>
                     <label><input type="checkbox" name="nuit_samedi"> Samedi soir</label>
                     <label><input type="checkbox" name="nuit_dimanche"> Dimanche soir</label>
                 </div>
 
-                <textarea name="commentaire" placeholder="Un petit mot ou une précision (régime, etc.) ?"></textarea>
+                <div class="field-group">
+                    <label>Commentaire</label>
+                    <textarea name="commentaire" placeholder="Un petit mot, régimes alimentaires..."></textarea>
+                </div>
 
-                <hr>
-
-                <div class="honeyboom-box">
-                    <p><strong>HoneyBOOM Festival 2027</strong></p>
-                    <p class="subtext">Du 17 au 24 juillet 2027 au Portugal</p>
-                    <label>
-                        <input type="checkbox" name="interet_honeyboom"> Es-tu intéressé(e) ?
-                    </label>
+                <div class="honeyboom-box boom-style">
+                    <div class="boom-header">
+                        <p class="honey-title">HoneyBOOM Festival 2027</p>
+                        <span class="boom-location">Portugal</span>
+                    </div>
+                    <p class="subtext">Du 17 au 24 juillet 2027 • Une semaine de célébration magique</p>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="honeyboom" name="interet_honeyboom">
+                        <label for="honeyboom" class="boom-label">Es-tu intéressé(e) par cette aventure ?</label>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-submit">Confirmer ma venue</button>
             </form>
+        </div>
+
+        <div class="map-container">
+            <p class="map-label">Château d’Embourg, Souvigny</p>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.434860471131!2d3.193055!3d46.5125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f1191d8e1d5555%3A0x1d0d0d0d0d0d0d0d!2sCh%C3%A2teau%20d'Embourg!5e0!3m2!1sfr!2sfr!4v1715800000000!5m2!1sfr!2sfr" 
+                width="100%" height="450" style="border:0; filter: grayscale(100%) contrast(1.2) opacity(0.8);" allowfullscreen="" loading="lazy">
+            </iframe>
+            <div class="itinerary-wrapper">
+                <a href="https://www.google.com/maps/dir//Château+d'Embourg,+03210+Souvigny" target="_blank" class="btn-itinerary">
+                    Calculer mon itinéraire
+                </a>
+            </div>
         </div>
     </div>
 
