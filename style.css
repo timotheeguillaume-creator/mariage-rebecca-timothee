@@ -251,19 +251,47 @@ iframe:hover {
     background: var(--white);
 }
 
+
+/* Espacement pour séparer le HoneyBOOM du bouton final */
+.submit-separator {
+    height: 50px; /* Crée un vide visuel clair */
+}
+
+/* Style du Logo Boom */
+.boom-logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 15px;
+    filter: sepia(0.5); /* Pour l'adoucir un peu dans le thème mariage */
+}
+
+/* Conteneur de la carte pour s'assurer que le marqueur est bien visible */
+.map-frame-wrapper {
+    position: relative;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* Filtre pour la carte (optionnel : retirez-le si vous voulez les couleurs Google par défaut) */
+.map-frame-wrapper iframe {
+    filter: grayscale(40%) contrast(1.1); /* Moins radical que le noir et blanc total */
+}
+
+/* Bouton itinéraire plus visible */
 .btn-itinerary {
     display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid var(--dark);
+    padding: 15px 35px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
     text-decoration: none;
-    color: var(--dark);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 .btn-itinerary:hover {
-    background-color: var(--dark);
-    color: var(--white);
+    background: var(--gold);
+    color: white;
 }
