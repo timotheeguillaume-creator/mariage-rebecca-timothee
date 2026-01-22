@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebecca & Timothée</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="access-denied" class="parallax">
+        <div class="caption">
+            <span class="border">REBECCA & TIMOTHÉE</span><br>
+            <span class="date">Wedding 2026</span>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <div class="parallax">
+            <div class="caption">
+                <span class="border">REBECCA & TIMOTHÉE</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <h3>Heureux de vous compter parmi nous !</h3>
+            <p>Merci de remplir ce petit formulaire pour nous aider à tout organiser.</p>
+        </div>
+
+        <div class="rsvp-section">
+            <form id="rsvp-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
+                
+                <input type="hidden" name="guest_identifier" id="guest-id">
+
+                <input type="text" name="prenom" placeholder="Ton prénom" required>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="add-plus-one" name="vient_avec_partenaire">
+                    <label for="add-plus-one">Ajouter mon/ma partenaire (+1)</label>
+                </div>
+                <div id="partner-field" class="hidden">
+                    <input type="text" name="nom_partenaire" placeholder="Prénom du partenaire">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="has-kids" name="vient_avec_enfants">
+                    <label for="has-kids">Je viens avec des enfants</label>
+                </div>
+                <div id="kids-field" class="hidden">
+                    <input type="number" name="nb_enfants" placeholder="Nombre d'enfants">
+                    <input type="text" name="age_enfants" placeholder="Âges des enfants">
+                </div>
+
+                <hr>
+                
+                <p><strong>Quelles nuits seras-tu présent ?</strong></p>
+                <div class="nights-grid">
+                    <label><input type="checkbox" name="nuit_vendredi"> Vendredi soir</label>
+                    <label><input type="checkbox" name="nuit_samedi"> Samedi soir</label>
+                    <label><input type="checkbox" name="nuit_dimanche"> Dimanche soir</label>
+                </div>
+
+                <textarea name="commentaire" placeholder="Un petit mot ou une précision (régime, etc.) ?"></textarea>
+
+                <hr>
+
+                <div class="honeyboom-box">
+                    <p><strong>HoneyBOOM Festival 2027</strong></p>
+                    <p class="subtext">Du 17 au 24 juillet 2027 au Portugal</p>
+                    <label>
+                        <input type="checkbox" name="interet_honeyboom"> Es-tu intéressé(e) ?
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmer ma venue</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

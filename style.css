@@ -1,0 +1,138 @@
+:root {
+    --gold: #c5a059;
+    --dark: #2c2c2c;
+    --light-bg: #fcfbf9;
+    --text: #4a4a4a;
+    --white: #ffffff;
+    --font-titles: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--light-bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+    font-weight: 300;
+}
+
+.hidden { display: none !important; }
+
+/* Parallax */
+.parallax {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg');
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .parallax { background-attachment: scroll; height: 50vh; }
+}
+
+.caption { text-align: center; color: var(--white); }
+
+.border {
+    font-family: var(--font-titles);
+    font-size: clamp(2rem, 8vw, 4rem);
+    letter-spacing: 5px;
+    font-style: italic;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.wedding-date { font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; }
+
+/* Formulaire */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    text-align: center;
+}
+
+.section-title { font-size: 2rem; margin-bottom: 20px; }
+
+.rsvp-section {
+    max-width: 550px;
+    margin: 0 auto 100px;
+    background: var(--white);
+    padding: 50px 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+}
+
+.field-group { margin-bottom: 25px; text-align: left; }
+.field-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; text-transform: uppercase; color: var(--gold); }
+
+input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+input:focus { border-bottom-color: var(--gold); }
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.side-by-side { display: flex; gap: 15px; margin-top: 10px; }
+
+.nights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 30px;
+    text-align: left;
+}
+
+.label-heading { font-weight: 400; text-align: left; margin-bottom: 10px; }
+
+.honeyboom-box {
+    background: #fffaf2;
+    padding: 25px;
+    border: 1px solid #f2e6d5;
+    margin-top: 30px;
+}
+
+.honey-title { font-family: var(--font-titles); font-size: 1.3rem; margin: 0; }
+.subtext { font-size: 0.8rem; color: #888; margin-bottom: 15px; }
+
+.btn-submit {
+    background: var(--dark);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover { background: var(--gold); }
+
+@media (max-width: 480px) {
+    .rsvp-section { padding: 30px 20px; }
+    .nights-grid { grid-template-columns: 1fr; }
+}
