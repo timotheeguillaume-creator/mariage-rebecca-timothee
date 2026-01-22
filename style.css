@@ -267,3 +267,8 @@ iframe:hover {
     background-color: var(--dark);
     color: var(--white);
 }
+
+/* Espacement pour séparer le HoneyBOOM du bouton final */
+.submit-separator {
+    height: 50px; /* Crée un vide visuel clair */
+}
