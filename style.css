@@ -44,21 +44,12 @@ body, html {
 }
 
 /* --- OPTIMISATION GRANDS ÉCRANS (PC) --- */
-@media (min-width: 1600px) {
+@media (min-width: 800px) {
     .parallax {
         /* On empêche l'image de zoomer à l'infini */
-        background-size: 1600px auto; 
+        background-size: 800px auto; 
         /* On remplit le reste avec la couleur de fond du site */
         background-color: var(--light-bg); 
-    }
-}
-
-/* Si vous préférez que l'image reste toujours entière sans être coupée du tout */
-@media (min-width: 1200px) {
-    .parallax {
-        /* L'image s'adapte à la hauteur mais ne dépasse jamais sa largeur réelle */
-        background-size: contain;
-        background-color: var(--light-bg);
     }
 }
 
@@ -537,7 +528,7 @@ iframe:hover {
 .locked-photo-bg {
     width: 100%;
     height: 100%;
-    background-image: url('votre-photo-couple.jpg'); /* Votre photo de couple */
+    background-image: url('mariage-bague.jpg'); /* Votre photo de couple */
     background-size: cover;
     background-position: center;
     
