@@ -85,9 +85,6 @@ body, html {
     }
 }
 
-@media (max-width: 768px) {
-    .parallax { background-attachment: scroll; height: 50vh; }
-}
 
 .caption { text-align: center; color: var(--white); }
 
