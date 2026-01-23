@@ -493,4 +493,65 @@ iframe:hover {
     .parallax-fun { height: 45vh; margin-top: 0px; }
 }
 
+/* --- ÉCRAN DE VERROUILLAGE --- */
+#access-denied {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: var(--light-bg); /* Couleur pêche en fond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
 
+.locked-bg-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.locked-photo-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url('votre-photo-couple.jpg'); /* Votre photo de couple */
+    background-size: cover;
+    background-position: center;
+    
+    /* EFFET DE FONDU HAUT ET BAS */
+    -webkit-mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%);
+    mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%);
+    
+    opacity: 0.6; /* Pour que le texte reste lisible */
+}
+
+/* Centrage du texte par-dessus */
+.locked-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.locked-message {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: var(--dark);
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* Ajustement pour le titre sur l'écran verrouillé */
+.locked-content .border {
+    color: var(--dark);
+    border-color: var(--dark);
+}
