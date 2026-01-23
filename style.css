@@ -1,7 +1,8 @@
 :root {
     --gold: #c5a059;
     --dark: #2c2c2c;
-    --light-bg: #fcfbf9;
+    /* Couleur blanc cassé / pêche très douce */
+    --light-bg: #fdf8f4; 
     --text: #4a4a4a;
     --white: #ffffff;
     --font-titles: 'Playfair Display', serif;
@@ -33,6 +34,29 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* --- DEUXIÈME PARALLAX (CHATEAU) --- */
+.parallax-chateau {
+    /* Remplacez par votre photo du château */
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('photo-chateau.jpg');
+    height: 60vh; /* Un peu plus court que le premier pour l'équilibre */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* Désactivation parallax sur mobile pour la fluidité */
+@media (max-width: 768px) {
+    .parallax-chateau { 
+        background-attachment: scroll; 
+        height: 40vh; 
+    }
 }
 
 @media (max-width: 768px) {
