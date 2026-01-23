@@ -40,7 +40,7 @@ body, html {
 .parallax-chateau {
     /* Remplacez par votre photo du château */
     background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('photo-chateau.jpg');
-    height: 60vh; /* Un peu plus court que le premier pour l'équilibre */
+    height: 80vh; /* Un peu plus court que le premier pour l'équilibre */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,7 +55,7 @@ body, html {
 @media (max-width: 768px) {
     .parallax-chateau { 
         background-attachment: scroll; 
-        height: 40vh; 
+        height: 100vh; 
     }
 }
 
@@ -204,7 +204,7 @@ input:focus { border-bottom-color: var(--gold); }
 .map-label {
     font-family: var(--font-titles);
     font-size: 1.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     letter-spacing: 2px;
 }
 
@@ -487,10 +487,10 @@ iframe:hover {
 @media (max-width: 768px) {
     .parallax, .parallax-chateau, .parallax-fun { 
         background-attachment: scroll; /* Le parallax est désactivé sur mobile */
-        height: 50vh; /* Hauteur ajustée pour mobile */
+        height: 100vh; /* Hauteur ajustée pour mobile */
     }
-    .parallax-chateau { height: 40vh; }
-    .parallax-fun { height: 45vh; margin-top: 0px; }
+    .parallax-chateau { height: 100vh; }
+    .parallax-fun { height: 100vh; margin-top: 0px; }
 }
 
 /* --- ÉCRAN DE VERROUILLAGE (TEXTE BLANC + SHADOW) --- */
