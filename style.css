@@ -24,16 +24,42 @@ body, html {
 .hidden { display: none !important; }
 
 /* Parallax */
+
+/* --- PREMIÈRE SECTION PARALLAX (BAGUE) --- */
 .parallax {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg');
     height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    
+    /* SOLUTION : On utilise 'contain' au lieu de 'cover' sur les grands écrans */
+    /* ou on limite la taille de diffusion */
+    background-size: cover; 
+    
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg');
+    
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* --- OPTIMISATION GRANDS ÉCRANS (PC) --- */
+@media (min-width: 1600px) {
+    .parallax {
+        /* On empêche l'image de zoomer à l'infini */
+        background-size: 1600px auto; 
+        /* On remplit le reste avec la couleur de fond du site */
+        background-color: var(--light-bg); 
+    }
+}
+
+/* Si vous préférez que l'image reste toujours entière sans être coupée du tout */
+@media (min-width: 1200px) {
+    .parallax {
+        /* L'image s'adapte à la hauteur mais ne dépasse jamais sa largeur réelle */
+        background-size: contain;
+        background-color: var(--light-bg);
+    }
 }
 
 /* --- DEUXIÈME PARALLAX (CHATEAU) --- */
@@ -562,6 +588,19 @@ iframe:hover {
 /* Ajustement de la ligne sous le titre */
 .locked-content .border {
     border-color: white !important;
+}
+
+.success-message {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fdfdfd;
+    border-radius: 10px;
+}
+
+.success-message h3 {
+    font-family: var(--font-titles);
+    color: var(--gold);
+    font-size: 2rem;
 }
 
 
