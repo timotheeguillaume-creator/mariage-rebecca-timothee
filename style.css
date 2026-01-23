@@ -354,7 +354,7 @@ iframe:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    
     margin-bottom: 10px;
 }
 
@@ -363,7 +363,7 @@ iframe:hover {
 }
 
 .boom-logo-main {
-    height: 100px; /* Logo un peu plus présent */
+    height: 140px; /* Logo un peu plus présent */
     width: auto;
     filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
 }
