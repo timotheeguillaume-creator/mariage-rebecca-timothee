@@ -108,6 +108,17 @@ body, html {
     background: var(--white);
     padding: 50px 40px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+/* L'ombre légère : très diffuse et peu opaque */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 8px rgba(0, 0, 0, 0.02);
+    
+    /* Pour s'assurer que l'ombre ne déborde pas sur les côtés sur mobile */
+    width: 90%;
+}
+
+/* Optionnel : un petit effet au survol pour plus d'interactivité */
+.rsvp-section:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
 }
 
 .field-group { margin-bottom: 25px; text-align: left; }
@@ -525,7 +536,7 @@ iframe:hover {
     z-index: 1;
 }
 
-/* .locked-photo-bg {
+.locked-photo-bg {
     width: 100%;
     height: 100%;
     background-image: url('mariage-bague.jpg'); 
@@ -545,7 +556,7 @@ iframe:hover {
         transparent 100%);
     
     opacity: 0.6; 
-}*/
+}
 
 /* Texte en blanc avec ombre portée forte */
 .white-shadow { 
