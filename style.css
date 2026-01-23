@@ -460,12 +460,13 @@ iframe:hover {
 /* Définition des images spécifiques pour chaque section fun */
 #fun-photo-1 {
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-1.jpg'); /* Votre première photo fun */
+    height: 100vh; 
 }
 
 #fun-photo-2 {
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-2.jpg'); /* Votre deuxième photo fun */
     /* Vous pouvez ajuster la hauteur ou d'autres propriétés si vous voulez */
-    height: 60vh; 
+    height: 100vh; 
 }
 
 /* Texte de la section fun */
