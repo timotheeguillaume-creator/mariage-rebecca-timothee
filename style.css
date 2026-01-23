@@ -298,71 +298,106 @@ iframe:hover {
 }
 
 /* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
+
+/* --- SECTION HONEYBOOM COMPACTE AVEC LOGO ZOOMÉ --- */
 .honeyboom-box.boom-anniversary-style {
     position: relative;
     background-image: url('boom-bg-small.jpg');
     background-size: cover;
-    background-position: center 20%; /* Ajusté pour mieux voir la Lady */
+    background-position: center 20%;
     border-radius: 12px;
-    padding: 30px; /* Réduit pour l'effet rectangulaire */
+    padding: 40px; /* Un peu plus de padding pour laisser respirer le logo absolu */
     color: white;
     text-align: center;
     overflow: hidden;
     margin-top: 50px;
+    min-height: 250px; /* Assure le format rectangulaire */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-/* Overlay sombre pour que le texte reste lisible sur l'image */
-.boom-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); 
-    z-index: 1;
-}
-
+/* On crée un conteneur relatif pour le contenu texte uniquement */
 .boom-content {
     position: relative;
     z-index: 2;
+    width: 100%;
+}
+
+.boom-header-flex {
+    display: flex;
+    flex-direction: column; /* On empile pour gérer le logo à part */
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.boom-titles {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* LE LOGO : Positionné de manière absolue pour ne pas décaler le texte */
+.boom-logo-main {
+    position: absolute;
+    right: 20px;   /* Ajustez la position droite */
+    top: 50%;
+    transform: translateY(-50%); /* Centre verticalement */
+    height: 180px;  /* ZOOM : On passe de 100px à 180px */
+    width: auto;
+    opacity: 0.8;   /* Léger fondu pour l'intégration */
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+    pointer-events: none; /* Pour pouvoir cliquer sur la checkbox même si le logo dépasse dessus */
+    z-index: 1;
 }
 
 .honey-title {
     font-family: 'Amatic SC', cursive;
-    font-size: 4rem !important; /* Plus grand */
-    letter-spacing: 8px; /* Lettres plus espacées */
+    font-size: 4.5rem !important; /* Titre imposant */
+    letter-spacing: 10px;
     margin: 0;
     line-height: 0.8;
     font-weight: 700;
-    /* Ombre multi-niveaux pour une lisibilité maximale sur fond complexe */
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.4);
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
 }
 
 .boom-sub {
     font-family: 'Amatic SC', cursive;
-    font-size: 1.4rem;
-    letter-spacing: 10px; /* Très étiré */
+    font-size: 1.5rem;
+    letter-spacing: 12px;
     text-transform: uppercase;
     margin: 5px 0 0 0;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
-.boom-header-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 10px;
+.boom-date {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.5rem;
+    margin: 15px 0 0 0;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
-.boom-titles {
-    text-align: right; /* Aligne le texte vers le logo pour plus d'harmonie */
+.boom-location {
+    font-size: 0.8rem;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-top: 5px;
 }
 
-.boom-logo-main {
-    height: 100px; /* Logo un peu plus présent */
-    width: auto;
-    filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+/* --- ADAPTATION MOBILE --- */
+@media (max-width: 768px) {
+    .boom-logo-main {
+        position: relative; /* Reprend sa place normale sur petit écran */
+        right: auto;
+        top: auto;
+        transform: none;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+    .honey-title {
+        font-size: 3rem !important;
+        letter-spacing: 5px;
+    }
 }
 
 /* Adaptation Mobile : on repasse le logo au-dessus pour la lisibilité sur petit écran */
@@ -415,4 +450,26 @@ iframe:hover {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
+}
+
+/* Animation Sismique */
+.quake-effect {
+    animation: quake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    /* Optionnel : ajout d'un halo lumineux pendant la basse */
+    box-shadow: 0 0 30px rgba(226, 188, 138, 0.6) !important;
+}
+
+@keyframes quake {
+    10%, 90% { transform: translate3d(-2px, 0, 0) scale(1.01); filter: blur(0.5px); }
+    20%, 80% { transform: translate3d(4px, 0, 0) scale(1.02); filter: blur(1px); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0) scale(1.01); filter: blur(0.5px); }
+    40%, 60% { transform: translate3d(6px, 0, 0) scale(1.02); filter: blur(1px); }
+}
+
+/* On s'assure que la box a une transition pour le retour au calme */
+.boom-anniversary-style {
+    transition: transform 0.2s, box-shadow 0.4s;
 }

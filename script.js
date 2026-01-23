@@ -29,4 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
     kidsCheck.addEventListener('change', (e) => {
         kidsField.classList.toggle('hidden', !e.target.checked);
     });
+
+    const honeyCheck = document.getElementById('honeyboom');
+    const boomBox = document.querySelector('.boom-anniversary-style');
+    
+    // Création de l'élément audio en JS
+    const bassSound = new Audio('deep-bass.mp3');
+    bassSound.volume = 0.7; // Ajustez le volume ici
+
+    honeyCheck.addEventListener('change', function() {
+        if (this.checked) {
+            // 1. Jouer le son
+            bassSound.currentTime = 0; // Recommence le son si on clique vite
+            bassSound.play().catch(e => console.log("L'audio nécessite une interaction préalable."));
+
+            // 2. Ajouter l'effet sismique
+            boomBox.classList.add('quake-effect');
+
+            // 3. Retirer l'effet après l'animation (500ms)
+            setTimeout(() => {
+                boomBox.classList.remove('quake-effect');
+            }, 500);
+        }
+    });
 });
