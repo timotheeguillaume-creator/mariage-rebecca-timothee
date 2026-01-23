@@ -296,3 +296,87 @@ iframe:hover {
 .submit-separator {
     height: 50px; /* Crée un vide visuel clair */
 }
+
+/* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
+.honeyboom-box.boom-anniversary-style {
+    position: relative;
+    background-image: url('boom-bg.jpg'); /* Votre image de la dame */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    padding: 40px 30px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
+}
+
+/* Overlay sombre pour que le texte reste lisible sur l'image */
+.boom-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+
+.boom-content {
+    position: relative;
+    z-index: 2;
+}
+
+.honey-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3.5rem !important;
+    letter-spacing: 3px;
+    margin: 0;
+    line-height: 1;
+}
+
+.boom-sub {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: -5px;
+}
+
+.boom-totem .totem-icon {
+    font-family: 'Webdings'; /* Astuce pour une icône totemique rapide */
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.boom-date {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.2rem;
+    margin: 20px 0 5px 0;
+}
+
+.boom-location {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+/* Customisation de la checkbox pour le style Boom */
+.boom-check {
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.boom-check:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.boom-check label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
