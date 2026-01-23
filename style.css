@@ -300,7 +300,7 @@ iframe:hover {
 /* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
 .honeyboom-box.boom-anniversary-style {
     position: relative;
-    background-image: url('boom-bg.jpg'); /* Votre image de la dame */
+    background-image: url('boom-bg-small.jpg'); /* Votre image de la dame */
     background-size: cover;
     background-position: center;
     border-radius: 15px;
@@ -341,11 +341,36 @@ iframe:hover {
     margin-top: -5px;
 }
 
-.boom-totem .totem-icon {
-    font-family: 'Webdings'; /* Astuce pour une icône totemique rapide */
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 10px;
+.boom-header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.boom-titles {
+    text-align: right; /* Aligne le texte vers le logo pour plus d'harmonie */
+}
+
+.boom-logo-main {
+    height: 90px; /* Légèrement plus grand pour équilibrer le titre */
+    width: auto;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.4));
+}
+
+/* Adaptation Mobile : on repasse le logo au-dessus pour la lisibilité sur petit écran */
+@media (max-width: 600px) {
+    .boom-header-flex { 
+        flex-direction: column-reverse; /* Logo en haut, texte en dessous */
+        gap: 15px;
+    }
+    .boom-titles {
+        text-align: center;
+    }
+    .honey-title {
+        font-size: 3rem !important;
+    }
 }
 
 .boom-date {
