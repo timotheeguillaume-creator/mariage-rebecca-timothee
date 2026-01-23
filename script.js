@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // 3. Retirer l'effet après l'animation (500ms)
             setTimeout(() => {
                 boomBox.classList.remove('quake-effect');
-            }, 500);
+            }, 1600);
         }
     });
 });
