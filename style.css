@@ -271,8 +271,10 @@ iframe:hover {
 }
 
 .itinerary-wrapper {
-    padding: 30px;
-    background: var(--white);
+    background-color: var(--light-bg); /* Utilise la couleur pêche/blanc cassé */
+    padding: 40px;
+    text-align: center;
+    border-top: none; /* Optionnel : pour que la transition avec la carte soit invisible */
 }
 
 .btn-itinerary {
@@ -487,4 +489,21 @@ iframe:hover {
     }
     .parallax-chateau { height: 40vh; }
     .parallax-fun { height: 45vh; margin-top: 50px; }
+}
+
+
+/* Optimisation des performances Parallax */
+.parallax, .parallax-chateau, .parallax-fun {
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Utilisation de will-change pour aider le navigateur à anticiper le rendu */
+    will-change: transform; 
+}
+
+/* Sur mobile, on privilégie la fluidité à l'effet de profondeur */
+@media (max-width: 768px) {
+    .parallax, .parallax-chateau, .parallax-fun {
+        background-attachment: scroll; /* Moins lourd que 'fixed' */
+        image-rendering: -webkit-optimize-contrast;
+    }
 }
