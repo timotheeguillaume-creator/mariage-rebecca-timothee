@@ -47,7 +47,7 @@ body, html {
 @media (min-width: 800px) {
     .parallax {
         /* On empêche l'image de zoomer à l'infini */
-        background-size: 800px auto; 
+        background-size: 750px auto; 
         /* On remplit le reste avec la couleur de fond du site */
         background-color: var(--light-bg); 
     }
@@ -525,14 +525,14 @@ iframe:hover {
     z-index: 1;
 }
 
-.locked-photo-bg {
+/* .locked-photo-bg {
     width: 100%;
     height: 100%;
-    background-image: url('mariage-bague.jpg'); /* Votre photo de couple */
+    background-image: url('mariage-bague.jpg'); 
     background-size: cover;
     background-position: center;
     
-    /* EFFET DE FONDU HAUT ET BAS */
+    
     -webkit-mask-image: linear-gradient(to bottom, 
         transparent 0%, 
         black 15%, 
@@ -544,8 +544,8 @@ iframe:hover {
         black 85%, 
         transparent 100%);
     
-    opacity: 0.6; /* Pour que le texte reste lisible */
-}
+    opacity: 0.6; 
+}*/
 
 /* Texte en blanc avec ombre portée forte */
 .white-shadow { 
