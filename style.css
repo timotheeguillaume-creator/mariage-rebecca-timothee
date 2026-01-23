@@ -1,441 +1,72 @@
 :root {
     --gold: #c5a059;
     --dark: #2c2c2c;
-    /* Couleur blanc cassé / pêche très douce */
-    --light-bg: #fdf8f4; 
+    --light-bg: #fff5ee; /* Blanc cassé pêche */
     --text: #4a4a4a;
     --white: #ffffff;
     --font-titles: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
 }
 
-* { box-sizing: border-box; }
-
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: var(--font-body);
-    background-color: var(--light-bg);
-    color: var(--text);
-    scroll-behavior: smooth;
-    font-weight: 300;
-}
-
+body, html { margin: 0; font-family: var(--font-body); background: var(--light-bg); color: var(--text); scroll-behavior: smooth; }
 .hidden { display: none !important; }
 
 /* Parallax */
-.parallax {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg');
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.parallax, .parallax-chateau {
+    height: 100vh; background-attachment: fixed; background-position: center; background-size: cover;
+    display: flex; align-items: center; justify-content: center;
 }
+.parallax { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg'); }
+.parallax-chateau { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('photo-chateau.jpg'); height: 60vh; margin-top: 50px; }
 
-/* --- DEUXIÈME PARALLAX (CHATEAU) --- */
-.parallax-chateau {
-    /* Remplacez par votre photo du château */
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('photo-chateau.jpg');
-    height: 60vh; /* Un peu plus court que le premier pour l'équilibre */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-/* Désactivation parallax sur mobile pour la fluidité */
-@media (max-width: 768px) {
-    .parallax-chateau { 
-        background-attachment: scroll; 
-        height: 40vh; 
-    }
-}
-
-@media (max-width: 768px) {
-    .parallax { background-attachment: scroll; height: 50vh; }
-}
-
-.caption { text-align: center; color: var(--white); }
-
-.border {
-    font-family: var(--font-titles);
-    font-size: clamp(2rem, 8vw, 4rem);
-    letter-spacing: 5px;
-    font-style: italic;
-    font-weight: 400;
-    border-bottom: 1px solid rgba(255,255,255,0.6);
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.wedding-date { font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; }
+.caption { text-align: center; color: white; }
+.border { font-family: var(--font-titles); font-size: clamp(2rem, 8vw, 4rem); border-bottom: 1px solid white; padding-bottom: 10px; }
 
 /* Formulaire */
-.content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 80px 20px 40px;
-    text-align: center;
-}
+.rsvp-section { max-width: 600px; margin: 0 auto 100px; background: white; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.field-group { margin-bottom: 20px; }
+.spacer-top { margin-top: 30px; }
 
-.section-title { font-size: 2rem; margin-bottom: 20px; }
-
-.rsvp-section {
-    max-width: 550px;
-    margin: 0 auto 100px;
-    background: var(--white);
-    padding: 50px 40px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.03);
-}
-
-.field-group { margin-bottom: 25px; text-align: left; }
-.field-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; text-transform: uppercase; color: var(--gold); }
-
-input[type="text"], input[type="number"], textarea {
-    width: 100%;
-    padding: 12px 0;
-    border: none;
-    border-bottom: 1px solid #eee;
-    font-family: inherit;
-    font-size: 1rem;
-    outline: none;
-}
-
-input:focus { border-bottom-color: var(--gold); }
-
-.checkbox-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-    text-align: left;
-}
-
-.side-by-side { display: flex; gap: 15px; margin-top: 10px; }
-
-.nights-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 20px 0 30px;
-    text-align: left;
-}
-
-.label-heading { font-weight: 400; text-align: left; margin-bottom: 10px; }
-
+/* --- STYLE HONEYBOOM --- */
 .honeyboom-box {
-    background: #fffaf2;
-    padding: 25px;
-    border: 1px solid #f2e6d5;
-    margin-top: 30px;
+    position: relative; background-image: url('boom-bg-small.jpg'); background-size: cover; background-position: center;
+    border-radius: 15px; padding: 30px; color: white; overflow: hidden; margin-top: 50px;
+}
+.boom-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); z-index: 1; }
+
+.boom-grid {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.5fr 1fr; /* Texte large à gauche, Logo à droite */
+    align-items: center; gap: 20px; text-align: left;
 }
 
-.honey-title { font-family: var(--font-titles); font-size: 1.3rem; margin: 0; }
-.subtext { font-size: 0.8rem; color: #888; margin-bottom: 15px; }
-
-.btn-submit {
-    background: var(--dark);
-    color: white;
-    width: 100%;
-    padding: 20px;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-submit:hover { background: var(--gold); }
-
-@media (max-width: 480px) {
-    .rsvp-section { padding: 30px 20px; }
-    .nights-grid { grid-template-columns: 1fr; }
-}
-
-/* Espacement formulaire */
-.spacer-top {
-    margin-top: 35px; /* Espace entre le champ texte et les checkbox */
-}
-
-/* Style du long texte d'intro */
-.intro-text {
-    max-width: 700px;
-    text-align: justify;
-    text-justify: inter-word;
-    margin-bottom: 50px;
-}
-
-.intro-text p {
-    margin-bottom: 25px;
-    color: var(--text);
-    font-size: 1.05rem;
-}
-
-.intro-text .section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-style: italic;
-}
-
-.highlight {
-    text-align: center;
-    font-style: italic;
-    color: var(--gold);
-    font-size: 1.1rem !important;
-    margin: 40px 0 !important;
-}
-
-/* Carte stylisée */
-.map-container {
-    padding: 60px 0 0 0;
-    background-color: var(--white);
-    text-align: center;
-}
-
-.map-label {
-    font-family: var(--font-titles);
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-}
-
-/* On force la carte en mode "Flat/Epuré" via CSS filter */
-iframe {
-    filter: grayscale(100%) invert(5%) contrast(1.1);
-}
-
-/* --- STYLE HONEYBOOM (Inspi Festival) --- */
-.honeyboom-box.boom-style {
-    background: linear-gradient(135deg, #fffaf2 0%, #fef3e6 100%);
-    padding: 30px;
-    border: none;
-    border-radius: 40px 10px 40px 10px; /* Forme organique */
-    margin-top: 40px;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid #e2bc8a;
-}
-
-.boom-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.honey-title {
-    font-family: var(--font-titles);
-    font-size: 1.5rem;
-    color: #8d6e63; /* Brun chaud terreux */
-    margin: 0;
-}
-
-.boom-location {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: #e2bc8a;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 20px;
-}
-
-.boom-label {
-    font-weight: 400;
-    color: #5d4037;
-}
-
-/* --- SECTION CARTE & ITINERAIRE --- */
-.map-container {
-    padding: 60px 0 0 0;
-    background-color: var(--white);
-    text-align: center;
-}
-
-iframe {
-    filter: grayscale(100%) contrast(1.1) opacity(0.8);
-    transition: 0.5s ease;
-}
-
-iframe:hover {
-    filter: grayscale(0%) opacity(1); /* La carte reprend des couleurs au survol */
-}
-
-.itinerary-wrapper {
-    padding: 30px;
-    background: var(--white);
-}
-
-.btn-itinerary {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid var(--dark);
-    text-decoration: none;
-    color: var(--dark);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-.btn-itinerary:hover {
-    background-color: var(--dark);
-    color: var(--white);
-}
-
-/* Espacement pour séparer le HoneyBOOM du bouton final */
-.submit-separator {
-    height: 50px; /* Crée un vide visuel clair */
-}
-
-/* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
-.honeyboom-box.boom-anniversary-style {
-    position: relative;
-    background-image: url('boom-bg-small.jpg');
-    background-size: cover;
-    background-position: center 20%; /* Ajusté pour mieux voir la Lady */
-    border-radius: 12px;
-    padding: 30px; /* Réduit pour l'effet rectangulaire */
-    color: white;
-    text-align: center;
-    overflow: hidden;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Overlay sombre pour que le texte reste lisible sur l'image */
-.boom-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); 
-    z-index: 1;
-}
-
-.boom-content {
-    position: relative;
-    z-index: 2;
-}
-
-.honey-title {
-    font-family: 'Amatic SC', cursive;
-    font-size: 4rem !important; /* Plus grand */
-    letter-spacing: 8px; /* Lettres plus espacées */
-    margin: 0;
-    line-height: 0.8;
-    font-weight: 700;
-    /* Ombre multi-niveaux pour une lisibilité maximale sur fond complexe */
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.4);
-}
-
-.boom-sub {
-    font-family: 'Amatic SC', cursive;
-    font-size: 1.4rem;
-    letter-spacing: 10px; /* Très étiré */
-    text-transform: uppercase;
-    margin: 5px 0 0 0;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-}
-
-.boom-header-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 10px;
-}
-
-.boom-titles {
-    text-align: right; /* Aligne le texte vers le logo pour plus d'harmonie */
-}
+.honey-title { font-family: 'Amatic SC'; font-size: 4rem !important; letter-spacing: 8px; margin: 0; line-height: 0.9; text-shadow: 2px 2px 10px black; }
+.boom-sub { font-family: 'Amatic SC'; font-size: 1.4rem; letter-spacing: 8px; text-transform: uppercase; text-shadow: 2px 2px 10px black; }
+.boom-date { font-family: 'Amatic SC'; font-size: 2.2rem; margin: 10px 0 0; text-shadow: 2px 2px 10px black; }
 
 .boom-logo-main {
-    height: 100px; /* Logo un peu plus présent */
-    width: auto;
+    width: 180px; /* Taille zoomée */
+    height: auto;
     filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
-}
-
-
-/* Adaptation Mobile : on repasse le logo au-dessus pour la lisibilité sur petit écran */
-@media (max-width: 600px) {
-    .boom-header-flex { 
-        flex-direction: column-reverse; /* Logo en haut, texte en dessous */
-        gap: 15px;
-    }
-    .boom-titles {
-        text-align: center;
-    }
-    .honey-title {
-        font-size: 3rem !important;
-    }
-}
-
-.boom-date {
-    font-family: 'Amatic SC', cursive;
-    font-size: 2.2rem;
-    margin: 10px 0 0 0; /* Rapproché du titre */
-    color: #fff;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-}
-
-.boom-location {
-    font-size: 0.7rem;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    opacity: 0.9;
-    margin-top: 5px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    transform: scale(1.2); /* Zoom sans casser la grille */
 }
 
 .boom-check {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto 0; /* Plus compact */
-    background: rgba(0, 0, 0, 0.3); /* Fond plus sombre pour la checkbox */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 50px;
+    position: relative; z-index: 2; margin-top: 25px; background: rgba(0,0,0,0.3);
+    padding: 10px; border-radius: 50px; justify-content: center; display: flex; align-items: center; gap: 10px;
 }
 
-.boom-check:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.boom-check label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-}
-
-/* Animation Sismique */
-.quake-effect {
-    animation: quake 0.4s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    /* Optionnel : ajout d'un halo lumineux pendant la basse */
-    box-shadow: 0 0 30px rgba(226, 188, 138, 0.6) !important;
-}
-
+/* Animations */
+.quake-effect { animation: quake 0.4s both; }
 @keyframes quake {
-    10%, 90% { transform: translate3d(-2px, 0, 0) scale(1.01); filter: blur(0.5px); }
-    20%, 80% { transform: translate3d(4px, 0, 0) scale(1.02); filter: blur(1px); }
-    30%, 50%, 70% { transform: translate3d(-6px, 0, 0) scale(1.01); filter: blur(0.5px); }
-    40%, 60% { transform: translate3d(6px, 0, 0) scale(1.02); filter: blur(1px); }
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
 }
 
-/* On s'assure que la box a une transition pour le retour au calme */
-.boom-anniversary-style {
-    transition: transform 0.2s, box-shadow 0.4s;
-}
+.submit-separator { height: 60px; }
+.btn-submit { background: var(--dark); color: white; width: 100%; padding: 20px; border: none; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; }
+
+/* Carte */
+.map-wrapper-crop { height: 450px; overflow: hidden; position: relative; }
+.map-wrapper-crop iframe { margin-top: -150px; filter: grayscale(100%); }
