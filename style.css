@@ -300,16 +300,18 @@ iframe:hover {
 /* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
 .honeyboom-box.boom-anniversary-style {
     position: relative;
-    background-image: url('boom-bg-small.jpg'); /* Votre image de la dame */
+    background-image: url('boom-bg.jpg');
     background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    padding: 40px 30px;
+    background-position: center 20%; /* Ajusté pour mieux voir la Lady */
+    border-radius: 12px;
+    padding: 30px; /* Réduit pour l'effet rectangulaire */
     color: white;
     text-align: center;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    margin-top: 40px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Overlay sombre pour que le texte reste lisible sur l'image */
@@ -327,18 +329,22 @@ iframe:hover {
 
 .honey-title {
     font-family: 'Amatic SC', cursive;
-    font-size: 3.5rem !important;
-    letter-spacing: 3px;
+    font-size: 4rem !important; /* Plus grand */
+    letter-spacing: 8px; /* Lettres plus espacées */
     margin: 0;
-    line-height: 1;
+    line-height: 0.8;
+    font-weight: 700;
+    /* Ombre multi-niveaux pour une lisibilité maximale sur fond complexe */
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.4);
 }
 
 .boom-sub {
     font-family: 'Amatic SC', cursive;
-    font-size: 1.2rem;
-    letter-spacing: 5px;
+    font-size: 1.4rem;
+    letter-spacing: 10px; /* Très étiré */
     text-transform: uppercase;
-    margin-top: -5px;
+    margin: 5px 0 0 0;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
 .boom-header-flex {
@@ -346,7 +352,7 @@ iframe:hover {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .boom-titles {
@@ -354,9 +360,9 @@ iframe:hover {
 }
 
 .boom-logo-main {
-    height: 90px; /* Légèrement plus grand pour équilibrer le titre */
+    height: 100px; /* Logo un peu plus présent */
     width: auto;
-    filter: drop-shadow(0 0 8px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
 }
 
 /* Adaptation Mobile : on repasse le logo au-dessus pour la lisibilité sur petit écran */
@@ -376,24 +382,29 @@ iframe:hover {
 .boom-date {
     font-family: 'Amatic SC', cursive;
     font-size: 2.2rem;
-    margin: 20px 0 5px 0;
+    margin: 10px 0 0 0; /* Rapproché du titre */
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
 .boom-location {
     font-size: 0.7rem;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
     opacity: 0.9;
-    margin-bottom: 25px;
+    margin-top: 5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-/* Customisation de la checkbox pour le style Boom */
 .boom-check {
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto 0; /* Plus compact */
+    background: rgba(0, 0, 0, 0.3); /* Fond plus sombre pour la checkbox */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
     border-radius: 50px;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
 }
 
 .boom-check:hover {
