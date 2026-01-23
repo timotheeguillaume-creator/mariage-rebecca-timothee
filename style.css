@@ -493,11 +493,12 @@ iframe:hover {
     .parallax-fun { height: 45vh; margin-top: 0px; }
 }
 
-/* --- ÉCRAN DE VERROUILLAGE --- */
+/* --- ÉCRAN DE VERROUILLAGE (TEXTE BLANC + SHADOW) --- */
 #access-denied {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100vh;
-    background-color: var(--light-bg); /* Couleur pêche en fond */
+    top: 0; left: 0; 
+    width: 100%; height: 100vh;
+    background-color: var(--light-bg); /* Fond pêche */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -532,6 +533,12 @@ iframe:hover {
     opacity: 0.6; /* Pour que le texte reste lisible */
 }
 
+/* Texte en blanc avec ombre portée forte */
+.white-shadow { 
+    color: white !important; 
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.9), 0 0 25px rgba(0,0,0,0.5) !important; 
+}
+
 /* Centrage du texte par-dessus */
 .locked-content {
     position: relative;
@@ -540,18 +547,26 @@ iframe:hover {
     padding: 20px;
 }
 
+/* Message d'erreur/instruction en blanc */
 .locked-message {
-    font-family: var(--font-body);
+    color: white !important;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.8) !important;
     font-size: 0.9rem;
     margin-top: 20px;
     letter-spacing: 1px;
-    color: var(--dark);
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 /* Ajustement pour le titre sur l'écran verrouillé */
+/* Ajustement de la ligne sous le titre */
 .locked-content .border {
-    color: var(--dark);
-    border-color: var(--dark);
+    border-color: white !important;
 }
+
+
+
+
+
+
+
