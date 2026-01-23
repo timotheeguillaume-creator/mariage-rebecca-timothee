@@ -300,7 +300,7 @@ iframe:hover {
 /* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
 .honeyboom-box.boom-anniversary-style {
     position: relative;
-    background-image: url('boom-bg.jpg');
+    background-image: url('boom-bg-small.jpg');
     background-size: cover;
     background-position: center 20%; /* Ajusté pour mieux voir la Lady */
     border-radius: 12px;
