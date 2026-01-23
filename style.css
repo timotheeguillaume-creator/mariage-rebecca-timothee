@@ -271,7 +271,10 @@ iframe:hover {
 }
 
 .itinerary-wrapper {
-    padding: 30px;
+    padding-top: 40px;
+    padding-right: 30px;
+    padding-bottom: 80px;
+    padding-left: 30px;
     background: var(--white);
 }
 
@@ -451,7 +454,7 @@ iframe:hover {
     align-items: center;
     justify-content: center;
     color: white; /* Pour que le texte soit lisible sur la photo */
-    margin-top: 80px; /* Espace après la carte */
+    margin-top: 0px; /* Espace après la carte */
 }
 
 /* Définition des images spécifiques pour chaque section fun */
@@ -486,7 +489,7 @@ iframe:hover {
         height: 50vh; /* Hauteur ajustée pour mobile */
     }
     .parallax-chateau { height: 40vh; }
-    .parallax-fun { height: 45vh; margin-top: 50px; }
+    .parallax-fun { height: 45vh; margin-top: 0px; }
 }
 
 
