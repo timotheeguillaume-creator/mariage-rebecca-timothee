@@ -105,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Fonction pour débloquer l'audio au premier clic sur la page
         document.addEventListener('click', function unlockAudio() {
-            boomSound.play().then(() => {
-                boomSound.pause();
-                boomSound.currentTime = 0;
+            bassSound.play().then(() => {
+                bassSound.pause();
+                bassSound.currentTime = 0;
             }).catch(e => console.log("Audio en attente d'interaction"));
             
             // On retire l'écouteur après le premier clic pour ne pas le refaire
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     boomBox.classList.remove('quake-effect');
                 }, 1600);
-            }, 150); // Ce délai de 150ms crée la sensation de "puissance" du son
+            }, 100); // Ce délai de 150ms crée la sensation de "puissance" du son
         }
     });
 
