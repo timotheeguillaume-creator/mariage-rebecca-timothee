@@ -489,51 +489,88 @@ iframe:hover {
 }
 
 /* Conteneur principal du compte à rebours */
+/* Conteneur principal qui aligne les 3 blocs */
 #countdown {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Espace entre les blocs jours/heures/min */
+    align-items: flex-start; /* Aligne le haut des nombres */
+    gap: 40px;               /* Espace entre Jours, Heures et Minutes */
     font-family: var(--font-titles);
     color: white;
     padding-bottom: 15px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Style de la bordure commune aux titres */
+/* Style de la bordure commune (soulignement) */
 #countdown.border {
     border-bottom: 2px solid white;
-    display: inline-flex; /* Pour que la bordure ne prenne que la largeur du texte */
+    display: inline-flex;    /* La bordure s'adapte à la largeur du groupe */
+    margin: 0 auto;          /* Centrage horizontal si besoin */
 }
 
-/* Chaque bloc unité (Chiffre + Texte) */
+/* Chaque colonne (ex: le bloc "Jours") */
 .countdown-item {
     display: flex;
-    flex-direction: column; /* Chiffre en haut, texte en bas */
-    align-items: center;
+    flex-direction: column;  /* Empile le nombre et l'unité */
+    align-items: center;     /* CENTRE TOUT HORIZONTALEMENT */
+    min-width: 80px;         /* Donne une largeur stable pour éviter les décalages */
 }
 
-/* Les chiffres */
+/* Les chiffres (00) */
 .countdown-item span {
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Taille adaptative */
     font-weight: bold;
-    line-height: 1;
+    line-height: 1.1;        /* Réduit l'espace vertical entre chiffre et texte */
+    display: block;
 }
 
 /* Les labels (Jours, Heures, Minutes) */
 .countdown-item small {
-    font-family: var(--font-body); /* On utilise la police de corps pour plus de clarté */
-    font-size: 0.7rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;      /* Taille assez petite pour être élégante */
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 5px;
-    opacity: 0.9;
+    opacity: 0.85;
+    text-align: center;      /* Force le centrage du texte court */
 }
 
-/* Ajustement mobile */
+/* --- Ajustements Mobile --- */
 @media (max-width: 600px) {
-    #countdown { gap: 15px; }
-    .countdown-item span { font-size: 1.8rem; }
-    .countdown-item small { font-size: 0.6rem; }
+    #countdown {
+        gap: 20px;
+    }
+    .countdown-item {
+        min-width: 60px;
+    }
+    .countdown-item span {
+        font-size: 2rem;
+    }
+    .countdown-item small {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* On ajoute une bordure droite à chaque item sauf le dernier (Minutes) */
+.countdown-item:not(:last-child) {
+    position: relative;
+    padding-right: 20px; /* Espace avant la ligne */
+}
+
+/* La ligne séparatrice */
+.countdown-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px; /* Positionnée au milieu du gap de 40px */
+    top: 20%;
+    height: 60%; /* La ligne ne fait pas toute la hauteur pour rester discrète */
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.3); /* Blanc très transparent */
+}
+
+/* Ajustement du gap du conteneur pour accommoder les séparateurs */
+#countdown {
+    gap: 20px; /* Réduit car le padding-right compense */
 }
 
 /* Texte de la section fun */
