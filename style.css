@@ -103,6 +103,11 @@ body, html {
 .section-title { font-size: 2rem; margin-bottom: 20px; }
 
 .rsvp-section {
+    min-height: 400px; /* Ajuste selon la taille habituelle de ton formulaire */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le message verticalement dans cet espace */
+    transition: all 0.5s ease;
     max-width: 550px;
     margin: 0 auto 100px;
     background: var(--white);

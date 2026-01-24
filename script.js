@@ -89,6 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h3>C'est noté !</h3>
                         <p>On se voit très vite !</p>
                     </div>`;
+
+                // 2. On force le focus visuel (le scroll)
+            setTimeout(() => {
+                const successMessage = document.getElementById('success-anchor');
+                successMessage.scrollIntoView({ 
+                    behavior: 'smooth', // Animation fluide
+                    block: 'center'     // Centre le message au milieu de l'écran
+                });
+            }, 300); // 300ms est le délai idéal pour une sensation de fluidité
+
             } else {
                 throw new Error(data.message);
             }
@@ -119,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if ("vibrate" in navigator) {
                     // On fait une double vibration : une courte, un blanc, une longue
                     // [vibration, pause, vibration] en millisecondes
-                    navigator.vibrate([50, 200, 200, 200, 200, 200, 200]);
+                    navigator.vibrate([200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200]);
                 }else{
                     console.log('Pas de vibs ici bro.')
                 }
