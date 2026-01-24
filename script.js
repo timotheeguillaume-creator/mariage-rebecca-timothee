@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Création de l'élément audio en JS
     const bassSound = new Audio('deep-bass.mp3');
     bassSound.volume = 0.7; // Ajustez le volume ici
+    bassSound.preload = 'auto';
+    bassSound.load();
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbw9qgpUngA3N9-GvE_ARgA26tANcCKQquZGYvTepokSTZAtes3Py-s4Q44t9fMlly6v/exec';
     const form = document.getElementById('rsvp-form');
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.result === "EXISTS") {
                 form.innerHTML = `<div class="success-message">
                     <h3>Heureux de te revoir !</h3>
-                            <p>Tes réponses sont déjà enregistrées. Si tu souhaites les modifier, contactez-nous directement.</p>
+                            <p>Tes réponses sont déjà enregistrées. Si tu souhaites les modifier, contacte-nous directement.</p>
                 </div>`;
             }
         };
@@ -99,19 +101,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    
+
+        // Fonction pour débloquer l'audio au premier clic sur la page
+        document.addEventListener('click', function unlockAudio() {
+            boomSound.play().then(() => {
+                boomSound.pause();
+                boomSound.currentTime = 0;
+            }).catch(e => console.log("Audio en attente d'interaction"));
+            
+            // On retire l'écouteur après le premier clic pour ne pas le refaire
+            document.removeEventListener('click', unlockAudio);
+        }, { once: true });
+
+
     honeyCheck.addEventListener('change', function() {
         if (this.checked) {
             // 1. Jouer le son
             bassSound.currentTime = 0; // Recommence le son si on clique vite
             bassSound.play().catch(e => console.log("L'audio nécessite une interaction préalable."));
 
-            // 2. Ajouter l'effet sismique
-            boomBox.classList.add('quake-effect');
-
-            // 3. Retirer l'effet après l'animation (500ms)
             setTimeout(() => {
-                boomBox.classList.remove('quake-effect');
-            }, 1600);
+                // 2. Déclencher la vibration
+                if ("vibrate" in navigator) {
+                    // On fait une double vibration : une courte, un blanc, une longue
+                    // [vibration, pause, vibration] en millisecondes
+                    navigator.vibrate([50, 30, 200, 30, 200, 30, 200, 30, 200]);
+                }else{
+                    console.log('Pas de vibs ici bro.')
+                }
+
+                // 2. Ajouter l'effet sismique
+                boomBox.classList.add('quake-effect');
+
+                // 3. Retirer l'effet après l'animation (500ms)
+                setTimeout(() => {
+                    boomBox.classList.remove('quake-effect');
+                }, 1600);
+            }, 150); // Ce délai de 150ms crée la sensation de "puissance" du son
         }
     });
 
@@ -146,4 +173,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Appelez la fonction au chargement
     startCountdown();
+
+    const lazyBackgrounds = document.querySelectorAll(".parallax-fun");
+
+    if ("IntersectionObserver" in window) {
+        let bgObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Quand la section est visible, on ajoute la classe qui charge l'image
+                    entry.target.classList.add("bg-loaded");
+                    bgObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        lazyBackgrounds.forEach((bg) => bgObserver.observe(bg));
+    }
 });

@@ -36,7 +36,7 @@ body, html {
     /* ou on limite la taille de diffusion */
     background-size: cover; 
     
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('mariage-bague.webp');
     
     display: flex;
     align-items: center;
@@ -328,7 +328,7 @@ iframe:hover {
 /* --- STYLE HONEYBOOM PSYCHEDELIQUE --- */
 .honeyboom-box.boom-anniversary-style {
     position: relative;
-    background-image: url('boom-bg-small.jpg');
+    background-image: url('boom-bg-small.webp');
     background-size: cover;
     background-position: center 20%; /* Ajusté pour mieux voir la Lady */
     border-radius: 12px;
@@ -483,8 +483,8 @@ iframe:hover {
 }
 
 /* Définition des images spécifiques pour chaque section fun */
-#fun-photo-1 {
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-2.jpg'); /* Votre première photo fun */
+.bg-loaded#fun-photo-1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-2.webp'); /* Votre première photo fun */
     height: 100vh; 
 }
 
@@ -554,7 +554,7 @@ iframe:hover {
 /* On ajoute une bordure droite à chaque item sauf le dernier (Minutes) */
 .countdown-item:not(:last-child) {
     position: relative;
-    padding-right: 20px; /* Espace avant la ligne */
+    
 }
 
 /* La ligne séparatrice */
