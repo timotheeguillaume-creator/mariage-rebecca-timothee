@@ -85,18 +85,20 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             if (data.result === "SUCCESS") {
                 form.innerHTML = `
-                    <div class="success-message">
+                    <div id="success-anchor" class="success-message">
                         <h3>C'est noté !</h3>
                         <p>On se voit très vite !</p>
                     </div>`;
 
                 // 2. On force le focus visuel (le scroll)
             setTimeout(() => {
-                const successMessage = document.getElementById('success-message');
-                successMessage.scrollIntoView({ 
-                    behavior: 'smooth', // Animation fluide
-                    block: 'center'     // Centre le message au milieu de l'écran
-                });
+                const successMessage = document.getElementById('success-anchor');
+                if (successMessage) {
+                    successMessage.scrollIntoView({ 
+                        behavior: 'smooth', // Animation fluide
+                        block: 'center'     // Centre le message au milieu de l'écran
+                    });
+                }
             }, 300); // 300ms est le délai idéal pour une sensation de fluidité
 
             } else {
@@ -141,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     boomBox.classList.remove('quake-effect');
                 }, 1600);
-            }, 100); // Ce délai de 150ms crée la sensation de "puissance" du son
+            }, 50); // Ce délai de 150ms crée la sensation de "puissance" du son
         }
     });
 
