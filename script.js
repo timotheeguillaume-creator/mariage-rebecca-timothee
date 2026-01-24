@@ -47,17 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('guest-id').value = guestEmail;
 
         // VERIFICATION SI DEJA ENREGISTRÉ
+            
         fetch(`${scriptURL}?email=${guestEmail}`)
-            .then(response => response.text())
-            .then(result => {
-                if (result === "EXISTS") {
-                    form.innerHTML = `<div class="success-message">
-                        <h3>Merci !</h3>
-                        <p>Tes réponses ont bien été enregistrées. On a hâte de te voir !</p>
-                    </div>`;
+            .then(response => response.json()) // On attend du JSON maintenant
+            .then(data => {
+                if (data.result === "EXISTS") {
+                    form.innerHTML = `
+                        <div class="success-message">
+                            <h3>Heureux de te revoir !</h3>
+                            <p>Tes réponses sont déjà enregistrées. Si tu souhaites les modifier, contactez-nous directement.</p>
+                        </div>`;
                 }
-            });
-    }
+            })
+            .catch(err => console.log("Erreur de vérification (CORS ou autre):", err));
+            }
+        });
 
     // ENVOI DU FORMULAIRE EN AJAX
     form.addEventListener('submit', e => {
