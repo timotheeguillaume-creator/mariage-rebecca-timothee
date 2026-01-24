@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bassSound.volume = 0.7; // Ajustez le volume ici
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbw9qgpUngA3N9-GvE_ARgA26tANcCKQquZGYvTepokSTZAtes3Py-s4Q44t9fMlly6v/exec';
-    const urlParams = new URLSearchParams(window.location.search);
     const guestEmail = urlParams.get('guest');
     const form = document.getElementById('rsvp-form');
     const rsvpSection = document.querySelector('.rsvp-section');
