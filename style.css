@@ -716,11 +716,9 @@ iframe:hover {
 
 .btn-cal.google {
     background-color: #fff;
-    color: #4285F4; /* Bleu Google */
 }
 
 .btn-cal.ics {
-    background-color: #f1f1f1;
     color: #333;
 }
 
