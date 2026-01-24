@@ -484,14 +484,26 @@ iframe:hover {
 
 /* Définition des images spécifiques pour chaque section fun */
 #fun-photo-1 {
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-1.jpg'); /* Votre première photo fun */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-2.jpg'); /* Votre première photo fun */
     height: 100vh; 
 }
 
-#fun-photo-2 {
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-fun-2.jpg'); /* Votre deuxième photo fun */
-    /* Vous pouvez ajuster la hauteur ou d'autres propriétés si vous voulez */
-    height: 100vh; 
+#countdown {
+    font-family: var(--font-titles); /* Utilise Playfair Display comme les titres */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: white;
+    padding-bottom: 10px;
+    display: inline-block;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Pour la lisibilité sur la photo */
+}
+
+/* On réutilise le style de votre bordure mais on l'ajuste si besoin */
+#countdown.border {
+    border-bottom: 2px solid white;
+}
+
+#countdown span {
+    font-weight: bold;
 }
 
 /* Texte de la section fun */

@@ -37,6 +37,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const bassSound = new Audio('deep-bass.mp3');
     bassSound.volume = 0.7; // Ajustez le volume ici
 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9qgpUngA3N9-GvE_ARgA26tANcCKQquZGYvTepokSTZAtes3Py-s4Q44t9fMlly6v/exec';
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestEmail = urlParams.get('guest');
+    const form = document.getElementById('rsvp-form');
+    const rsvpSection = document.querySelector('.rsvp-section');
+
+    if (guestEmail) {
+        document.getElementById('main-content').classList.remove('hidden');
+        document.getElementById('access-denied').classList.add('hidden');
+        document.getElementById('guest-id').value = guestEmail;
+
+        // VERIFICATION SI DEJA ENREGISTRÉ
+        fetch(`${scriptURL}?email=${guestEmail}`)
+            .then(response => response.text())
+            .then(result => {
+                if (result === "EXISTS") {
+                    form.innerHTML = `<div class="success-message">
+                        <h3>Merci !</h3>
+                        <p>Tes réponses ont bien été enregistrées. On a hâte de te voir !</p>
+                    </div>`;
+                }
+            });
+    }
+
+    // ENVOI DU FORMULAIRE EN AJAX
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btnSubmit = form.querySelector('.btn-submit');
+        btnSubmit.innerText = "Envoi en cours...";
+        btnSubmit.disabled = true;
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                form.innerHTML = `<div class="success-message">
+                    <h3>C'est noté !</h3>
+                    <p>On a hâte de te voir !</p>
+                </div>`;
+            })
+            .catch(error => {
+                console.error('Erreur!', error.message);
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "Réessayer";
+            });
+    });
+
     honeyCheck.addEventListener('change', function() {
         if (this.checked) {
             // 1. Jouer le son
@@ -52,4 +97,36 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 1600);
         }
     });
+
+    function startCountdown() {
+        // Date cible : 26 juin 2027 à 14:00 (Heure Française)
+        const targetDate = new Date("June 26, 2027 14:00:00").getTime();
+
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "C'est le grand jour !";
+                return;
+            }
+
+            // Calcul des jours, heures et minutes
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Affichage
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+        };
+
+        // Lancer immédiatement et mettre à jour toutes les minutes (60000ms)
+        updateTimer();
+        setInterval(updateTimer, 60000);
+    }
+
+    // Appelez la fonction au chargement
+    startCountdown();
 });
