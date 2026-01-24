@@ -47,20 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('guest-id').value = guestEmail;
 
         // VERIFICATION SI DEJA ENREGISTRÉ
-            
-        fetch(`${scriptURL}?email=${guestEmail}`)
-            .then(response => response.json()) // On attend du JSON maintenant
-            .then(data => {
-                if (data.result === "EXISTS") {
-                    form.innerHTML = `
-                        <div class="success-message">
-                            <h3>Heureux de te revoir !</h3>
+        // Création d'une fonction globale que le script Google appellera
+        window.handleRSVPCheck = function(data) {
+            if (data.result === "EXISTS") {
+                form.innerHTML = `<div class="success-message">
+                    <h3>Heureux de te revoir !</h3>
                             <p>Tes réponses sont déjà enregistrées. Si tu souhaites les modifier, contactez-nous directement.</p>
-                        </div>`;
-                }
-            })
-            .catch(err => console.log("Erreur de vérification (CORS ou autre):", err));
-    }
+                </div>`;
+            }
+        };
+
+        // On injecte le script dynamiquement pour contourner CORS
+        const script = document.createElement('script');
+        script.src = `${scriptURL}?email=${guestEmail}&callback=handleRSVPCheck`;
+        document.body.appendChild(script);
+
+       }
 
 
     // ENVOI DU FORMULAIRE EN AJAX
