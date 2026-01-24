@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .catch(err => console.log("Erreur de vérification (CORS ou autre):", err));
-            }
-        });
+    }
+
 
     // ENVOI DU FORMULAIRE EN AJAX
     form.addEventListener('submit', e => {
@@ -70,18 +70,31 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSubmit.innerText = "Envoi en cours...";
         btnSubmit.disabled = true;
 
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                form.innerHTML = `<div class="success-message">
-                    <h3>C'est noté !</h3>
-                    <p>On a hâte de te voir !</p>
-                </div>`;
-            })
-            .catch(error => {
-                console.error('Erreur!', error.message);
-                btnSubmit.disabled = false;
-                btnSubmit.innerText = "Réessayer";
-            });
+        // On transforme les données du formulaire en paramètres URL pour éviter les soucis de redirection
+        const formData = new FormData(form);
+        const queryString = new URLSearchParams(formData).toString();
+
+        fetch(`${scriptURL}?${queryString}`, { 
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === "SUCCESS") {
+                form.innerHTML = `
+                    <div class="success-message">
+                        <h3>C'est noté !</h3>
+                        <p>On se voit très vite !</p>
+                    </div>`;
+            } else {
+                throw new Error(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Erreur!', error);
+            btnSubmit.disabled = false;
+            btnSubmit.innerText = "Réessayer";
+            alert("Oups, il y a eu un petit souci. Réessaie ou contacte-nous !");
+        });
     });
 
     honeyCheck.addEventListener('change', function() {
