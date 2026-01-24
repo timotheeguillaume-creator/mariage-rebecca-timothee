@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // 2. On force le focus visuel (le scroll)
             setTimeout(() => {
-                const successMessage = document.getElementById('success-anchor');
+                const successMessage = document.getElementById('success-message');
                 successMessage.scrollIntoView({ 
                     behavior: 'smooth', // Animation fluide
                     block: 'center'     // Centre le message au milieu de l'écran
