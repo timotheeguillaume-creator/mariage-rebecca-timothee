@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const accessDenied = document.getElementById('access-denied');
     const guestInput = document.getElementById('guest-id');
 
+    // Date : 2027-06-26 de 14:00 à 23:59
+    const eventTitle = encodeURIComponent("Mariage de Rébecca & Timothée 💍");
+    const eventDetails = encodeURIComponent("Nous avons hâte de vous retrouver pour célébrer notre union !");
+    const eventLocation = encodeURIComponent("Château d'Embourg', France");
+
+    // Lien Google Calendar
+    const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=20270626T120000Z/20270626T220000Z&details=${eventDetails}&location=${eventLocation}`;
+
+    // Lien ICS (Simplifié via un Data URI pour éviter de créer un fichier réel)
+    const icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nURL:" + window.location.href + "\nDTSTART:20270626T120000Z\nDTEND:20270626T220000Z\nSUMMARY:Mariage de Rébecca & Timothée 💍\nDESCRIPTION:C'est le grand jour !\nLOCATION:Chateau d'Embourg\nEND:VEVENT\nEND:VCALENDAR";
+    const icsUrl = "data:text/calendar;charset=utf8," + encodeURIComponent(icsContent);
+
     // 1. Vérification de l'accès
     if (guestEmail && guestEmail.includes('@')) {
         mainContent.classList.remove('hidden');
@@ -88,6 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div id="success-anchor" class="success-message">
                         <h3>C'est noté !</h3>
                         <p>On se voit très vite !</p>
+                        <div class="calendar-options" style="margin-top: 25px;">
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Ajouter la date à ton calendrier :</p>
+                            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                                <a href="${googleUrl}" target="_blank" class="btn-cal google">Google Calendar</a>
+                                <a href="${icsUrl}" download="mariage-tim-et-guillaume.ics" class="btn-cal ics">Apple / Outlook</a>
+                            </div>
+                        </div>
                     </div>`;
 
                 // 2. On force le focus visuel (le scroll)
