@@ -103,7 +103,7 @@ body, html {
 .section-title { font-size: 2rem; margin-bottom: 20px; }
 
 .rsvp-section {
-    min-height: 400px; /* Ajuste selon la taille habituelle de ton formulaire */
+    min-height: 100vh; /* Ajuste selon la taille habituelle de ton formulaire */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centre le message verticalement dans cet espace */
@@ -692,7 +692,31 @@ iframe:hover {
     font-size: 2rem;
 }
 
+.btn-cal {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+    border: 1px solid #ddd;
+}
 
+.btn-cal.google {
+    background-color: #fff;
+    color: #4285F4; /* Bleu Google */
+}
+
+.btn-cal.ics {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-cal:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
 
 
