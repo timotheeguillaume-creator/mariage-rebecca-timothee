@@ -101,18 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    
-
-        // Fonction pour débloquer l'audio au premier clic sur la page
-        document.addEventListener('click', function unlockAudio() {
-            bassSound.play().then(() => {
+                bassSound.play().then(() => {
                 bassSound.pause();
                 bassSound.currentTime = 0;
-            }).catch(e => console.log("Audio en attente d'interaction"));
-            
-            // On retire l'écouteur après le premier clic pour ne pas le refaire
-            document.removeEventListener('click', unlockAudio);
-        }, { once: true });
+                }).catch(e => console.log("Audio en attente d'interaction"));
+
 
 
     honeyCheck.addEventListener('change', function() {
@@ -126,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if ("vibrate" in navigator) {
                     // On fait une double vibration : une courte, un blanc, une longue
                     // [vibration, pause, vibration] en millisecondes
-                    navigator.vibrate([50, 30, 200, 30, 200, 30, 200, 30, 200]);
+                    navigator.vibrate([50, 200, 200, 200, 200, 200, 200]);
                 }else{
                     console.log('Pas de vibs ici bro.')
                 }
