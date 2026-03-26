@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const guestEmail = urlParams.get('guest');
+
+    const accommodationParam = urlParams.get('accommodation');
+    const hasAccommodation = accommodationParam !== 'no'; // True par défaut, False si 'no'
     
     const mainContent = document.getElementById('main-content');
     const accessDenied = document.getElementById('access-denied');
@@ -26,6 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Nettoyage de l'URL pour la discrétion
         window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    if (!hasAccommodation) {
+        // 1. Modifier le texte d'intro
+        const introText = document.getElementById('text-accommodation');
+        if (introText) {
+            introText.innerHTML = "La restauration et les repas sont prévus sur place durant tout le séjour. Cependant, <strong>l'hébergement n'est pas inclus</strong> au château. Nous vous fournirons prochainement une liste d'hôtels recommandés aux alentours. Une navette pourra éventuellement être mise en place pour faciliter vos déplacements.";
+        }
+
+        // 2. Modifier le titre de présence
+        const presenceTitle = document.getElementById('text-days-nights');
+        if (presenceTitle) presenceTitle.innerText = "Quels jours seras-tu présent ?";
+
+        // 3. Modifier les labels des checkboxes (enlever "soir")
+        const labels = document.querySelectorAll('.day-label');
+        const jours = ["Vendredi", "Samedi", "Dimanche"];
+        labels.forEach((label, index) => {
+            if(jours[index]) label.innerText = jours[index];
+        });
     }
 
     // 2. Logique Partenaire
@@ -88,6 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // On transforme les données du formulaire en paramètres URL pour éviter les soucis de redirection
         const formData = new FormData(form);
+        // On ajoute l'info d'hébergement pour le Google Sheet
+        formData.append('accommodation_type', hasAccommodation ? 'Chateau' : 'Exterieur');
+
         const queryString = new URLSearchParams(formData).toString();
 
         fetch(`${scriptURL}?${queryString}`, { 
